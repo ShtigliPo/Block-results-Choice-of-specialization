@@ -8,7 +8,7 @@ void ShowArray(string[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
-        System.Console.WriteLine($"{array[i]}  ");
+        System.Console.Write($"{array[i]}  ");
     }
     System.Console.WriteLine();
 }
@@ -18,15 +18,15 @@ string[] CreateArray()
     string value = "";
     string[] tempArray = new string[1000];
     System.Console.WriteLine($"Для завершения ввода введите 'exit' ");
-    for (int count = 0; count < array.Length; count++)
+    for (count = 0; value != "exit"; count++)
     {
-        value = Prompt($"Введите значение {count+1} ");
+        value = Prompt($"Введите значение {count + 1} ");
         if (value != "exit")
         {
-            tempArray [count] = value;
+            tempArray[count] = value;
         }
     }
-    string [] array = new string[count-1];
+    string[] array = new string[count - 1];
     for (int i = 0; i < array.Length; i++)
     {
         array[i] = tempArray[i];
@@ -39,15 +39,22 @@ string[] CheckThreeSymbol(string[] array)
     int index = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        string[] newArray = new string[count];
-        for (int j = 0; j < array.Length; j++)
+        if (array[i].Length <= 3)
+            count++;
+    }
+    string[] newArray = new string[count];
+    for (int j = 0; j < array.Length; j++)
+    {
+        if (array[j].Length <= 3)
         {
-            if (array[j].Length <= 3)
-            {
-                newArray[index] = array[j];
-                index++;
-            }
+            newArray[index] = array[j];
+            index++;
         }
     }
     return newArray;
 }
+string[] array = CreateArray();
+System.Console.Write("Вы ввели ->");
+ShowArray(array);
+System.Console.Write("Подходит только ->");
+ShowArray(CheckThreeSymbol(array));
