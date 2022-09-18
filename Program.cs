@@ -54,7 +54,7 @@ string[] CheckThreeSymbol(string[] array)
     return newArray;
 }
 string[] array = CreateArray();
-System.Console.Write("Вы ввели ->");
+System.Console.Write($"Вы ввели -> ");
 ShowArray(array);
-System.Console.Write("Подходит только ->");
+System.Console.Write("Подходит только -> ");
 ShowArray(CheckThreeSymbol(array));
